@@ -1,0 +1,298 @@
+﻿@model AISummarizerMVC.Models.AIResult
+
+@{
+    ViewData["Title"] = "AI Result";
+}
+
+<div class="min-vh-100 position-relative bg-dark overflow-hidden">
+
+    <!-- Full Screen Background -->
+    <div class="position-fixed top-0 start-0 w-100 h-100"
+         style="background-image:url('https://img.magnific.com/premium-photo/futuristic-robot-head-with-glowing-neon-lights_1121478-14867.jpg?semt=ais_hybrid&w=740&q=80');
+        background-size:cover;
+        background-position:center;
+        z-index:0;">
+    </div>
+
+
+    <!-- Dark Overlay -->
+    <div class="position-fixed top-0 start-0 w-100 h-100 bg-dark opacity-75"
+         style="z-index:1;">
+    </div>
+
+
+    <!-- Page Content -->
+    <div class="position-relative"
+         style="z-index:2;">
+
+        <div class="container py-4 py-md-5">
+
+
+            <!-- Header -->
+            <div class="d-flex flex-column flex-md-row
+                justify-content-between
+                align-items-md-center
+                gap-3 mb-4">
+
+                <div>
+
+                    <div class="mb-2">
+
+                        <span class="badge rounded-pill
+                            bg-primary
+                            px-3 py-2">
+
+                            ⚡ AI ANALYSIS COMPLETE
+
+                        </span>
+
+                    </div>
+
+                    <h1 class="text-white fw-bold mb-1">
+
+                        AI <span class="text-info">Result</span> 🤖
+
+                    </h1>
+
+                    <p class="text-white-50 mb-0">
+
+                        Your AI-generated insights are ready.
+
+                    </p>
+
+                </div>
+
+
+                <!-- New Task -->
+                <div>
+
+                    <a asp-controller="AI"
+                       asp-action="Index"
+                       class="btn btn-info fw-bold shadow px-4">
+
+                        BACK
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Topic Banner -->
+            <div class="card bg-dark bg-opacity-75
+                border border-info
+                shadow-lg mb-4">
+
+                <div class="card-body p-4">
+
+                    <div class="row align-items-center">
+
+                        <div class="col-md-8">
+
+                            <small class="text-info fw-bold">
+                                ANALYZED TOPIC
+                            </small>
+
+                            <h2 class="text-white fw-bold mb-0 mt-1">
+                                @Model.Topic
+                            </h2>
+
+                        </div>
+
+                        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+
+                            <span class="badge rounded-pill
+                                bg-dark
+                                border border-primary
+                                text-info
+                                px-3 py-2">
+
+                                🧠 AI GENERATED
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Results -->
+            <div class="row g-4">
+
+
+                <!-- Summary -->
+                <div class="col-12 col-lg-6">
+
+                    <div class="card h-100
+                        bg-dark bg-opacity-75
+                        border border-primary
+                        shadow-lg">
+
+                        <div class="card-header
+                            bg-transparent
+                            border-bottom border-primary
+                            text-white
+                            p-3">
+
+                            <div class="d-flex align-items-center">
+
+                                <div class="fs-3 me-3">
+                                    📄
+                                </div>
+
+                                <div>
+
+                                    <h4 class="mb-0 fw-bold">
+                                        Summary
+                                    </h4>
+
+                                    <small class="text-white-50">
+                                        AI generated overview
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="card-body p-4">
+
+                            <p class="text-white-50 mb-0"
+                               style="line-height:1.8;">
+
+                                @Model.Summary
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Questions -->
+                <div class="col-12 col-lg-6">
+
+                    <div class="card h-100
+                        bg-dark bg-opacity-75
+                        border border-info
+                        shadow-lg">
+
+                        <div class="card-header
+                            bg-transparent
+                            border-bottom border-info
+                            text-white
+                            p-3">
+
+                            <div class="d-flex align-items-center">
+
+                                <div class="fs-3 me-3">
+                                    💡
+                                </div>
+
+                                <div>
+
+                                    <h4 class="mb-0 fw-bold">
+                                        Questions
+                                    </h4>
+
+                                    <small class="text-white-50">
+                                        AI generated questions
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="card-body p-4">
+
+                            <ol class="list-group list-group-numbered">
+
+                                @foreach (var question in Model.Questions)
+                                {
+                                    <li class="list-group-item
+                                        bg-dark
+                                        text-white
+                                        border-secondary">
+
+                                        @question
+
+                                    </li>
+                                }
+
+                            </ol>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Bottom Status -->
+            <div class="text-center mt-5">
+
+                <span class="badge rounded-pill
+                    bg-dark bg-opacity-75
+                    border border-primary
+                    text-info
+                    px-3 py-2">
+
+                    ● ANALYSIS COMPLETE
+
+                </span>
+
+                <span class="badge rounded-pill
+                    bg-dark bg-opacity-75
+                    border border-info
+                    text-info
+                    px-3 py-2 ms-2">
+
+                    🧠 AI POWERED
+
+                </span>
+
+                <span class="badge rounded-pill
+                    bg-dark bg-opacity-75
+                    border border-primary
+                    text-info
+                    px-3 py-2 ms-2">
+
+                    ⚡ READY
+
+                </span>
+
+            </div>
+
+
+            <!-- Footer -->
+            <div class="text-center mt-4 mb-2">
+
+                <small class="text-white-50">
+
+                    AI CONTENT ASSISTANT
+                    <span class="mx-2">•</span>
+                    INTELLIGENT CONTENT ANALYSIS
+
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

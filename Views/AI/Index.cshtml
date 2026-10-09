@@ -1,0 +1,91 @@
+﻿@{
+    ViewData["Title"] = "AI Content Assistant";
+}
+
+@*
+    Place this file at: Views/AI/Index.cshtml
+    Posts to the existing AI/Generate action:  [HttpPost] public IActionResult Generate(string topic)
+*@
+
+<style>
+    body {
+        background-image: url('https://cdn.leonardo.ai/users/2c00339e-8c5e-4f14-bfea-6e0b5b307bc3/generations/1f14f6a9-c70c-6580-ad2c-9a4e314b0e5a/seedream-4.5_professional_photo_of_Flowing_neon_blue_and_purple_light_waves_on_dark_backgroun-0.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+    }
+
+    .ai-overlay {
+        background-color: rgba(8, 10, 20, 0.82);
+        min-height: 100vh;
+    }
+
+    .ai-card {
+        background-color: rgba(20, 22, 38, 0.85);
+        border: 1px solid rgba(140, 160, 255, 0.25);
+        backdrop-filter: blur(6px);
+    }
+</style>
+
+<div class="ai-overlay d-flex align-items-center py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-9 col-lg-7">
+
+                <div class="ai-card rounded-4 shadow-lg p-4 p-md-5 text-light">
+
+                    <div class="text-center mb-4">
+                        <h1 class="fw-bold mb-2">AI Content Assistant</h1>
+                        <p class="text-light text-opacity-75 mb-0">
+                            Enter a topic and let AI turn it into a summary and a set of questions worth exploring.
+                        </p>
+                    </div>
+
+                    <div class="d-flex justify-content-center gap-3 mb-4 flex-wrap">
+                        <span class="badge rounded-pill text-bg-primary px-3 py-2">AI Ready</span>
+                        <span class="badge rounded-pill text-bg-info px-3 py-2">Fast</span>
+                        <span class="badge rounded-pill text-bg-success px-3 py-2">Intelligent</span>
+                    </div>
+
+                    <form asp-controller="AI" asp-action="Generate" method="post">
+                        <div class="mb-3">
+                            <label for="topic" class="form-label">Topic</label>
+                            <input type="text"
+                                   class="form-control form-control-lg"
+                                   id="topic"
+                                   name="topic"
+                                   placeholder="e.g. Renewable Energy"
+                                   required
+                                   maxlength="60" />
+                            <div class="form-text text-light text-opacity-75">
+                                Enter a short topic, about 1–3 words.
+                            </div>
+                        </div>
+
+                        <div class="d-grid mb-4">
+                            <button type="submit" class="btn btn-primary btn-lg fw-semibold">
+                                Generate With AI
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="border-top border-light border-opacity-25 pt-4">
+                        <p class="fw-semibold mb-2">What you'll get:</p>
+                        <ol class="mb-0 ps-3">
+                            <li class="mb-2">A concise summary of your topic.</li>
+                            <li>5 related questions to help you explore it further.</li>
+                        </ol>
+                    </div>
+
+                </div>
+
+                <p class="text-center text-light text-opacity-50 small mt-4 mb-0">
+                    AI Content Assistant
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>
